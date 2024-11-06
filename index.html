@@ -67,7 +67,9 @@ function showPopup(event) {
 }
 
 function closePopup() {
-    document.getElementById("popup").style.display = "none"; // Hide the popup
+    document.getElementById("popup").style.display = "none";
+        document.getElementById("contactForm").submit(); // Submit the form after closing the popup
+// Hide the popup
     window.location.href = "https://myidscore.id/"; // Redirect after closing
 }
 </script>
