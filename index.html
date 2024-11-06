@@ -61,23 +61,24 @@
 </div>
 
 <script>
-let isFirstSubmission = true; // Flag to track if this is the first form submission
+let isPopupShown = false; // Track if the popup has been shown
 
 function showPopup(event) {
-    if (isFirstSubmission) {
-        event.preventDefault(); // Prevent the form submission on the first time
+    if (!isPopupShown) {
+        event.preventDefault(); // Prevent submission on the first time
         document.getElementById("popup").style.display = "flex"; // Show the popup
-        isFirstSubmission = false; // Set flag to false for subsequent submissions
+        isPopupShown = true; // Update the flag so the popup won't show again
     }
 }
 
 function closePopup() {
     document.getElementById("popup").style.display = "none"; // Hide the popup
-    if (!isFirstSubmission) {
-        document.getElementById("contactForm").submit(); // Submit the form if not the first time
-    }
-    // Redirect after closing
-    window.location.href = "https://myidscore.id/";
+    
+    // Submit the form after closing the popup and redirect after submission
+    setTimeout(() => {
+        document.getElementById("contactForm").submit(); // Submit the form
+    }, 100); // Small delay to ensure the popup closes smoothly
 }
 </script>
+
 
