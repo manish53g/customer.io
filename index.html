@@ -61,15 +61,23 @@
 </div>
 
 <script>
+let isFirstSubmission = true; // Flag to track if this is the first form submission
+
 function showPopup(event) {
-    event.preventDefault(); // Prevent the default form submission
-    document.getElementById("popup").style.display = "flex"; // Show the popup
+    if (isFirstSubmission) {
+        event.preventDefault(); // Prevent the form submission on the first time
+        document.getElementById("popup").style.display = "flex"; // Show the popup
+        isFirstSubmission = false; // Set flag to false for subsequent submissions
+    }
 }
 
 function closePopup() {
-    document.getElementById("popup").style.display = "none";
-        document.getElementById("contactForm").submit(); // Submit the form after closing the popup
-// Hide the popup
-    window.location.href = "https://myidscore.id/"; // Redirect after closing
+    document.getElementById("popup").style.display = "none"; // Hide the popup
+    if (!isFirstSubmission) {
+        document.getElementById("contactForm").submit(); // Submit the form if not the first time
+    }
+    // Redirect after closing
+    window.location.href = "https://myidscore.id/";
 }
 </script>
+
